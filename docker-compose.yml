@@ -1,0 +1,15 @@
+
+version: "3.8"
+services:
+  turnero:
+    build: .
+    image: turnero-ultra:latest
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=sqlite:///./turnero.db
+      - TZ=America/Bogota
+    volumes:
+      - ./app:/app/app
+      - ./turnero.db:/app/turnero.db
